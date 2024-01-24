@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button-blue {
+            background-color: #3498db;
+        }
+
+        .button-green {
+            background-color: #2ecc71;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Scroll Animation */
+        @keyframes rotateIn {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animated {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards, rotateIn 2s linear infinite;
+        }
+
+        /* Pulsating Animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .button-pulse:hover {
+            animation: pulse 1s infinite;
+        }
+
+        /* Image with Hover Effects */
+        .image-container {
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .image-container:hover img {
+            filter: grayscale(100%);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="#" class="button button-blue">Hover me</a>
+    <a href="#" class="button button-green button-pulse">Pulsate</a>
+    <p class="animated">Scroll down to see the animation</p>
+
+    <div class="image-container">
+        <img src="bags/bag1.jpg" alt="Sample Image">
+    </div>
+</div>
+
+<script>
+    // Adding scroll animation when the element comes into view
+    window.addEventListener('scroll', function () {
+        var element = document.querySelector('.animated');
+        var position = element.getBoundingClientRect().top;
+        var windowHeight = window.innerHeight;
+
+        if (position < windowHeight) {
+            element.classList.add('animated');
+        }
+    });
+</script>
+
+</body>
+</html>
